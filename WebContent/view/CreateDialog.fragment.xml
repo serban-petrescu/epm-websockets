@@ -1,0 +1,54 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <Dialog
+    class="sapUiPopupWithPadding" >
+    <content>
+        <Label text="{i18n>Name}" />
+        <Input id="dialogInput1" value="{Name}" />
+        <Label text="{i18n>Description}" />
+        <Input id="dialogInput2" value="{Description}" />
+        <Label text="{i18n>Price}" />
+        <HBox width="100%" alignItems="Start" >
+            <Input id="dialogInput3" value="{Price}" width="100%" >
+              <layoutData>
+                <FlexItemData growFactor="2" />
+              </layoutData>
+            </Input>
+            <Select items="{/Currencys}" selectedKey="{CurrencyDetails/Code}" width="100%">
+              <layoutData>
+                <FlexItemData growFactor="1" />
+              </layoutData>
+                <core:Item key="{Code}" text="{Code}" />
+            </Select>
+        </HBox>
+        <Label text="{i18n>Weight}" />
+        <HBox width="100%" alignItems="Start" >
+            <Input id="dialogInput4" value="{Weight}" width="100%" >
+                  <layoutData>
+                    <FlexItemData growFactor="2" />
+                  </layoutData>
+            </Input>
+            <Select items="{/WeightUnits}" selectedKey="{WeightUnitDetails/Code}" width="100%" >
+                  <layoutData>
+                    <FlexItemData growFactor="1" />
+                  </layoutData>
+                <core:Item key="{Symbol}" text="{Symbol}" />
+            </Select>
+        </HBox>
+        <Label text="{i18n>Category}" />
+        <Select items="{/Categorys}" selectedKey="{CategoryDetails/Id}" width="100%" >
+              <layoutData>
+                <FlexItemData growFactor="1" />
+              </layoutData>
+            <core:Item key="{Id}" text="{Name}" />
+        </Select>
+    </content>
+    <beginButton>
+      <Button text="{i18n>accept}" type="Accept" press="onDialogAcceptButton" />
+    </beginButton>
+    <endButton>
+      <Button text="{i18n>cancel}" type="Reject" press="onDialogCloseButton" />
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

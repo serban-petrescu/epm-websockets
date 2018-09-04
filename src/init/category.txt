@@ -1,0 +1,7 @@
+Projector
+Graphics Card
+Accessory
+Printer
+Monitor
+Laptop
+Keyboard

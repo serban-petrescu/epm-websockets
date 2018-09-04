@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>scnEpmWebsockets</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <parent>
+		<groupId>sd</groupId>
+		<artifactId>sd-parent</artifactId>
+		<version>1.0.0</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<dependencies>
+		<!-- Required for compilation and required at runtime (additional web application
+			libraries) -->
+		<dependency>
+			<groupId>org.apache.olingo</groupId>
+			<artifactId>olingo-odata2-api</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.olingo</groupId>
+			<artifactId>olingo-odata2-core</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.olingo</groupId>
+			<artifactId>olingo-odata2-jpa-processor-api</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.olingo</groupId>
+			<artifactId>olingo-odata2-jpa-processor-core</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>2.7.5</version>
+		</dependency>
+		<dependency>
+	<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpclient</artifactId>
+		<version>4.5</version>
+	</dependency>
+		<dependency>
+			<groupId>com.sap.security.core.server</groupId>
+			<artifactId>csi</artifactId>
+			<version>1.0.1</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/WebContent/WEB-INF/lib/com.sap.security.core.server.csi_1.0.1.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>javax.persistence</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+		<!-- Required for executing PersonCRUDIntegrationTest without a DB tunnel -->
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>10.8.2.2</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Required for executing PersonCRUDIntegrationTest against a HANA DB -->
+		<dependency>
+			<groupId>com.sap.db</groupId>
+			<artifactId>jdbc</artifactId>
+			<version>1.0.49.373159</version>
+			<scope>system</scope>
+			<systemPath>${sap.cloud.sdk.path}/repository/plugins/com.sap.db.jdbc_1.0.49.373159.jar</systemPath>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<!-- DB type to be used for integration testing -->
+		<dbtype>hana</dbtype>
+		<!-- Explicitly set JMX port for DB tunnel background process to avoid
+			port clash with ${local.server.jmx.port} -->
+		<dbtunnel.jmx.port>9019</dbtunnel.jmx.port>
+	</properties>
+
+</project>

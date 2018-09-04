@@ -1,0 +1,12 @@
+t	tonne
+kg	kilogram
+hg	hectogram
+g	gram
+dg	decigram
+cg	centigram
+mg	milligram
+µg	microgram
+carat	carat
+grain	grain
+oz	ounce
+lb	pound

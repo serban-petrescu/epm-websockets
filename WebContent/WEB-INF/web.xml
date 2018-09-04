@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>EPM Websockets Demo</display-name>
+	<resource-ref>
+		<res-ref-name>jdbc/DefaultDB</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+	</resource-ref>
+	<servlet>
+		<servlet-name>ODataServiceServlet</servlet-name>
+		<servlet-class>org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>org.apache.olingo.odata2.core.rest.app.ODataApplication</param-value>
+		</init-param>
+		<init-param>
+			<param-name>org.apache.olingo.odata2.service.factory</param-name>
+			<param-value>odata.ODataServiceFactory</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ODataServiceServlet</servlet-name>
+		<url-pattern>/model.svc/*</url-pattern>
+	</servlet-mapping>
+    <servlet>
+        <servlet-name>BackendProxy</servlet-name>
+        <servlet-class>odata.BackendProxy</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BackendProxy</servlet-name>
+        <url-pattern>/backend.svc/*</url-pattern>
+    </servlet-mapping>
+
+	<!--  OData Destination	-->
+	<resource-ref>
+      <res-ref-name>DEST</res-ref-name>
+      <res-type>com.sap.core.connectivity.api.http.HttpDestination</res-type>
+	</resource-ref>
+
+</web-app>
